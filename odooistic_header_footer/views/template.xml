@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="custom_session_header_footer">
+            <t t-set="company" t-value="user.company_id" />
+            <div t-attf-class="o_odooistic#{company.id}_layout article o_report_layout mb4"
+                t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-call="web.address_layout" />
+                <t t-raw="0" />
+            </div>
+        </template>
+
+        <template id="odooistic_header_footer">
+            <t t-set="company" t-value="user.company_id" />
+            <div t-attf-class="header o_company_#{company.id}_layout">
+                <div class="o_odooistic_header">
+                    <div class="row1">
+                        <div class="image_class">
+                            <img t-att-src="image_data_uri(res_company.logo)" style="width:150px;" />
+                        </div>
+
+                        <div class="address_right">
+                            <span t-if="res_company.street">
+                                <span t-if="res_company.street"><t t-esc="res_company.street" />,</span>
+                                <br />
+                                <span t-if="res_company.street2"><t t-esc="res_company.street2" />,</span>
+                                <br />
+                                <span t-if="res_company.city"><t t-esc="res_company.city" />,</span>
+                                <span t-if="res_company.state_id.name"><t
+                                        t-esc="res_company.state_id.name" />,</span>
+                                <span t-if="res_company.zip"><t t-esc="res_company.zip" />,</span>
+                                <br />
+                                <span t-if="res_company.country_id.name">
+                                    <t t-esc="res_company.country_id.name" />
+                                </span>
+                            </span>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+
+            <div t-attf-class="footer o_odooistic_footer o_company_#{company.id}_layout">
+                <div class="row">
+                    <div class="col-10">
+                        <span t-field="company.report_footer" />
+                    </div>
+                    <div class="col-2">
+                        <ul t-if="report_type == 'pdf'"
+                            class="list-inline pagenumber float-right text-center">
+                            <li class="list-inline-item"> Page <span class="page" /> of <span
+                                    class="topage" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                t-attf-class="o_company_#{company.id}_layout article o_report_odooistic_layout mb4"
+                t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-call="web.address_layout" />
+                <t t-raw="0" />
+            </div>
+
+        </template>
+    </data>
+</odoo>

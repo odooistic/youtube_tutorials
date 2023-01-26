@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="OrderLinesReceipt" t-inherit="point_of_sale.OrderLinesReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//t[@t-esc='line.product_name_wrapped[0]']" position="after">
+            <t t-esc="line.default_code" />
+        </xpath>
+        <xpath expr="//div[@t-esc='line.product_name_wrapped[0]']" position="after">
+            <t t-esc="line.default_code" />
+        </xpath>
+        
+    </t>
+
+    <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[@class='pos-receipt-contact']" position="inside">
+            <t t-if='receipt.client'>
+                <div>Client:
+                    <t t-esc='receipt.client.name' />
+                </div>
+            </t>
+        </xpath>
+    </t>
+</templates>

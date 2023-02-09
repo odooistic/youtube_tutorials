@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_tags_extension_tree_view" model="ir.ui.view">
+        <field name="name">product.tags.extension.tree.view</field>
+        <field name="model">product.tags</field>
+        <field name="arch" type="xml">
+            <tree string="Product Tags" create="1" delete="1" editable="bottom">
+                <field name="name"/>
+                <field name="active"/>
+                <field name="color" widget="color_picker"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_tags_extension_search_view" model="ir.ui.view">
+        <field name="name">product.tags.extension.search.view</field>
+        <field name="model">product.tags</field>
+        <field name="arch" type="xml">
+            <search string="Search Product Tags">
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+   
+    <record model="ir.actions.act_window" id="product_tags_extension_action_view">
+        <field name="name"> Product Tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.tags</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <menuitem name="Product Tags"
+        id="product_tags_extension_menu"
+        parent="stock.menu_stock_config_settings"
+        action="product_tags_extension_action_view" />
+
+</odoo>

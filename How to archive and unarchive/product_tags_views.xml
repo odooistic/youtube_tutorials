@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_tags_extension_tree_view" model="ir.ui.view">
+        <field name="name">product.tags.extension.tree.view</field>
+        <field name="model">product.tags</field>
+        <field name="arch" type="xml">
+            <tree string="Product Tags">
+                <field name="name" />
+                <field name="color" widget="color_picker" />
+                <field name="active" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="product_tags_extension_form_view" model="ir.ui.view">
+        <field name="name">product.tags.extension.tree.view</field>
+        <field name="model">product.tags</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="color" widget="color_picker" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="product_tags_extension_search_view" model="ir.ui.view">
+        <field name="name">product.tags.extension.search.view</field>
+        <field name="model">product.tags</field>
+        <field name="arch" type="xml">
+            <search string="Search Product Tags">
+                <field name="name" />
+                <separator/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="product_tags_extension_action_view">
+        <field name="name"> Product Tags</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">product.tags</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Product Tags"
+        id="product_tags_extension_menu"
+        parent="stock.menu_stock_config_settings"
+        action="product_tags_extension_action_view" />
+</odoo>

@@ -1,0 +1,13 @@
+from odoo import models, fields, api, exceptions, _
+
+class CrmTeamExt(models.Model):
+    _inherit= "crm.team"
+    
+    manage_queries = fields.Boolean(string='Queries Managing')
+    
+    @api.constrains('manage_queries')
+    def _check_queries_assignage(self):
+        for record in self:
+            team_managing_queries = self.search([('manage_queries', '=', True), ('id', '!=', record.id)], limit=1)
+            if team_managing_queries and record.manage_queries:
+                raise exceptions.ValidationError(f"Queries are already being managed by '{team_managing_queries.name}'.")

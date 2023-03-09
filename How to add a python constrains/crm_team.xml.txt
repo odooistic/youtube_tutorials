@@ -1,0 +1,16 @@
+<odoo>
+
+
+<record id="sales_team_manage_queries_ext" model="ir.ui.view">
+    <field name="name">sales.team.manage.queries.ext</field>
+    <field name="model">crm.team</field>
+    <field name="inherit_id" ref="sales_team.crm_team_view_form" />
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='company_id']" position="after">
+            <field name="manage_queries" />
+        </xpath>
+    </field>
+</record>
+
+
+</odoo>

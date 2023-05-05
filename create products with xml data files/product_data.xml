@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <data noupdate="1">
+        <record id="product_hp_charger" model="product.template">
+            <field name="name">HP Charger</field>
+            <field name="type">product</field>
+            <field name="list_price">10.0</field>
+            <field name="default_code">HP_Charger</field>
+        </record>
+
+        <record id="product_dell_charger" model="product.template">
+            <field name="name">Dell Charger</field>
+            <field name="type">product</field>
+            <field name="list_price">12.0</field>
+            <field name="default_code">DELL_Charger</field>
+        </record>
+
+        <record id="corsair_mouse" model="product.template">
+            <field name="name">Corsair Mouse</field>
+            <field name="type">product</field>
+            <field name="list_price">45</field>
+            <field name="default_code">corsair_mouse</field>
+        </record>
+    
+    </data>
+    
+
+</odoo>

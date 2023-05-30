@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_task_inherit" inherit_id="project.portal_my_task">
+        <xpath expr="//div[@id='task_content']//div[@id='card_body']" position="after">
+            <div class="row">
+                <div class="col-12 col-md-12 pb-2">
+                    <strong> Sequence</strong>
+                    <input type="number" id="sequence" t-att-value="task.sequence" class="form-control"/>
+                </div>
+                <div class="col-12 col-md-12 pb-2">
+                    <strong> Email</strong>
+                    <input type="text" id="email_cc" t-att-value="task.email_cc"/>
+                </div>
+            </div>
+        </xpath> 
+    </template>
+</odoo>

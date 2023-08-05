@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_task_inherit_color" model="ir.ui.view">
+        <field name="name">project.task.inherit.color</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="change_color"/>
+            </xpath>
+
+            <xpath expr="//page[last()]" position="after">
+                <page name="meetings" string="Meetings">
+                    <field name="project_meetings_ids" >
+                        <tree editable="bottom" string="Meetings">
+                            <field name="name"/>
+                            <field name="task_id"/>
+                            <field name="project_id"/>
+                            <field name="scheduled_meeting_date"/>
+                            <field name="actual_meeting_date"/>
+                            <field name="completed"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='meetings']" position="after">
+                <page name="meetings_completed" string="Completed Meetings">
+                    <field name="completed_meetings_ids" >
+                        <tree editable="bottom" string="Meetings">
+                            <field name="name" readonly="1"/>
+                            <field name="task_id" readonly="1"/>
+                            <field name="scheduled_meeting_date" readonly="1"/>
+                            <field name="actual_meeting_date" readonly="1"/>
+                            <field name="partner_id"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    
+
+    </odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="report_deliveryslip_barcode_customization" inherit_id="stock.report_delivery_document">
+        
+        <xpath expr="//thead/tr/th[@name='th_sm_quantity']" position="after">
+            <th name="th_sm_barcode"><strong>Product Barcode</strong></th>
+        </xpath>
+
+        <xpath expr="//tbody/tr/td[3]" position="after">
+            <td style="text-align: center;">
+                <t t-if="move.product_id.barcode">
+                    <div>
+                        <span t-esc="move.product_id.barcode" t-options="{'widget': 'barcode', 'symbology': 'auto', 'width': 400, 'height': 100, 'quiet': 0, 'img_style': 'height:35px;'}"/>
+                    </div>
+                    <div>
+                        <span t-esc="move.product_id.barcode"/>
+                    </div>
+                </t>
+            </td>
+        </xpath>
+
+    </template>
+</odoo>

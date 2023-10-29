@@ -1,0 +1,15 @@
+from odoo import models, fields, api, _
+
+class StockPicking(models.Model):
+    _inherit= "stock.picking"
+    
+    def _action_done(self):
+        res = super(StockPicking, self)._action_done()
+
+        for picking in self:
+            sale_order = picking.sale_id
+            if sale_order:
+                invoices = sale_order._create_invoices()
+                invoices.action_post()
+
+        return res
